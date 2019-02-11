@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float _xMov = Input.GetAxisRaw("Horizontal");
-        float _zMov = Input.GetAxisRaw("Vertical");
+        bool _zMov = Input.GetButton("Jump");
 
         CheckCollision();
         Move(_xMov);
@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
         motor.Move(sendX);
     }
 
-    void Jump(float _zMov)
+    void Jump(bool _zMov)
     {
         motor.Jump(_zMov);
     }
