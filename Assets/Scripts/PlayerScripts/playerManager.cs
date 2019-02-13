@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class playerManager : MonoBehaviour {
 
-    private int plScore;
+    DecayTheFloor decay;
 
+    void Start()
+    {
+        decay = GetComponent<DecayTheFloor>();
+    }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public void Death()
+    {
+
+    }
 }
