@@ -26,7 +26,7 @@ public class Parasite : MonoBehaviour
 
     public void Decay()
     {
-        if(decay <= 5 && decayTimer <= 0)
+        if(decay <= 6 && decayTimer <= 0)
         {
             decayTimer = 1;
             decay += 1;
