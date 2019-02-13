@@ -13,25 +13,28 @@ public class DecayTheFloor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
 
+        CastRay();
 
     }
 
     private void CastRay()
     {
-        RaycastHit2D[] hit = new RaycastHit2D[10];
+        RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, Vector2.down, 1f);
+        print(hit.Length);
         GameObject currentHit;
-        if (Collider2D.Raycast(Vector2.down, hit, 5f , LayerMask.GetMask("UI")))  
+        if (hit.Length>=1)
         {
-            for(int i = 0; i < hit.Length; i++)
+            for( int i = 1; i < hit.Length; i++)
             {
                 currentHit = hit[i].collider.gameObject;
-                if (true)
+                if (currentHit.tag == "UI")
                 {
-                
+                    print("ok");
+                    currentHit.GetComponent<Parasite>().Decay(3);
                 }
             }
+            
         }
     }
 }
