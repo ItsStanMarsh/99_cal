@@ -8,6 +8,7 @@ public class Parasite : MonoBehaviour
     public int decay = 0;
     // reset timer befor next "pulse"
     private float decayTimer = 0;
+    private int delay = 0;
     
     // === update every frame
     void Update()
@@ -21,36 +22,73 @@ public class Parasite : MonoBehaviour
     }
 
     // === the decay function 
-    public void Decay(int infectMore)
+    public void Decay()
     {
         // if decay hasn't gotten past 5 
         if(decay < 5 && decayTimer <= 0)
         {
+            // set the timer to 1
             decayTimer = 1;
-            decay += 1;
+            // dacay couter +1
+            decay++;
+            // calc the next greyTone
             float greyTone = 1f - ((decay*1.5f) / 10f);
-            print(greyTone);
+            // set the materials color to the greytone to darken the skin
             this.gameObject.GetComponent<Renderer>().material.color = new Color(greyTone, greyTone, greyTone, 1);
-        }
-        if (infectMore > 0)
-        {
-            //right
-            infectRight(infectMore);
-            infectLeft(infectMore);
         }
     }
     
-    public void infectRight(int infect)
+    // === function to infect the object to its right
+    public void InfectRight(int infect)
     {
+        if (delay != 0) { delay -= 1; }
+        Decay();
+        // raycast to the right
         RaycastHit2D[] hitRight = Physics2D.RaycastAll(transform.position, Vector2.right, 0.2f);
+        // refrence to the object to the right
         Parasite par = hitRight[2].collider.gameObject.GetComponent<Parasite>();
-        par.Decay(infect-1);
+        if (infect > 0)
+        {
+            infect -= 1;
+            par.InfectRight(infect);
+        }
+        if (decay >= 2 && par.decay < 5 && delay == 0)
+        {
+            delay += 1;
+            par.InfectRight(0);
+        }
     }
 
-    public void infectLeft(int infect)
+    // === function to infect the object to its left
+    public void InfectLeft(int infect)
     {
-        RaycastHit2D[] hitRight = Physics2D.RaycastAll(transform.position, Vector2.left, 0.2f);
-        Parasite par = hitRight[2].collider.gameObject.GetComponent<Parasite>();
-        par.Decay(infect-1);
+        if (delay != 0) { delay -= 1; }
+        Decay();
+        // raycast to the left
+        RaycastHit2D[] hitLeft = Physics2D.RaycastAll(transform.position, Vector2.left, 0.2f);
+        // refrence to the object to the left
+        Parasite par = hitLeft[2].collider.gameObject.GetComponent<Parasite>();
+        if (infect > 0)
+        {
+            infect -= 1;
+            par.InfectLeft(infect);
+        }
+        if (decay >= 2 && par.decay < 5 && delay == 0)
+        {
+            delay += 1;
+            par.InfectLeft(0);
+        }
+    }
+
+    // === function that gets activated when another collider enters this object
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        // check if the other colider is inhabited by a player
+        if(other.tag == "Player")
+        {
+            // call the death function of the other player
+            other.gameObject.GetComponent<playerManager>().Death();
+            this.GetComponent<playerManager>().Death();
+        }
     }
 }

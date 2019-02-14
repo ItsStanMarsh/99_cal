@@ -1,8 +1,7 @@
 fileFormatVersion: 2
-guid: 61c757bacdc961f4aac77b4ddbfec93c
+guid: 0b6cf131a962d4e4eb9e83964c54baa6
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: walk3_0
+  fileIDToRecycleName: {}
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -32,7 +31,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -41,12 +40,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,31 +104,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: walk3_0
-      rect:
-        serializedVersion: 2
-        x: 272
-        y: 265
-        width: 90
-        height: 164
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8736a41cadfeae344a0a7055e5dba3d4
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: b0a821b55e2f7284d8cf0617615cb2d7
+    spriteID: dd65f463e09d02641a34fc762a25236b
     vertices: []
     indices: 
     edges: []

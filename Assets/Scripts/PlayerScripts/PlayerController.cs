@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     public Transform GroundCollider;
     public float speed = 1000f;
+    public bool canInput = true;
 
     private PlayerMotor motor;
     private bool grounded = false;
@@ -20,8 +21,13 @@ public class PlayerController : MonoBehaviour
         bool _zMov = Input.GetButton("Jump");
 
         CheckCollision();
-        Move(_xMov);
-        Jump(_zMov);
+        if (canInput)
+        {
+            Move(_xMov);
+            Jump(_zMov);
+        }
+
+
     }
 
     void CheckCollision()

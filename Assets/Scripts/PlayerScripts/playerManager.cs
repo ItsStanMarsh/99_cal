@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class playerManager : MonoBehaviour {
 
-    private int plScore;
+    DecayTheFloor decay;
 
+    // === the start function gets called once on awake
+    void Start()
+    {
+        decay = GetComponent<DecayTheFloor>();
+    }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    // === 
+    public void Death()
+    {
+        GetComponent<PlayerController>().canInput = false;
+    }
 }
