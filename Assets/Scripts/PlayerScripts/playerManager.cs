@@ -15,6 +15,6 @@ public class playerManager : MonoBehaviour {
     // === 
     public void Death()
     {
-        
+        GetComponent<PlayerController>().canInput = false;
     }
 }

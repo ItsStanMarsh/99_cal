@@ -30,7 +30,8 @@ public class DecayTheFloor : MonoBehaviour
                 currentHit = hit[i].collider.gameObject;
                 if (currentHit.tag == "UI")
                 {
-                    currentHit.GetComponent<Parasite>().Decay(3);
+                    currentHit.GetComponent<Parasite>().InfectLeft(3);
+                    currentHit.GetComponent<Parasite>().InfectRight(3);
                 }
             }
             
